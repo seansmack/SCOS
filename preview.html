@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCOS SOPs</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+  <style>
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .user-icon {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    /* More intense gradient with deeper blacks and stronger contrast */
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      overflow-y: auto;
+      background: linear-gradient(to bottom right, #000000 0%, #0d0d1a 25%, #1a0d2e 50%, #0a0a14 75%, #000000 100%);
+      background-attachment: fixed;
+    }
+    /* Hide scrollbar for all browsers while maintaining scroll functionality */
+
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    *::-webkit-scrollbar {
+      display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    * {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+  </style>
+</head>
+<body class="text-white font-sans min-h-screen">
+  
+  <!-- Header Bar -->
+<i class="fi fi-br-it"></i>
+  <header class="fixed top-0 left-0 right-0 blbg-ack/80 backdrop-blur-lg border-b border-zinc-800/50 z-50">
+    <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 bg-gradient-to-br from-violet-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg shadow-violet-500/20">
+          
+          <i class="fi fi-rr-404 text-xl"></i>
+        </div>
+        <span class="text-lg font-semibold">SCOS SOPs</span>
+      </div>
+      
+      <div class="flex items-center gap-4">
+
+        <!-- User profile Icon
+        <button class="user-icon w-10 h-10 rounded-full flex items-center justify-center text-white font-medium hover:scale-105 transition-transform shadow-lg shadow-violet-500/30">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10Z" fill="white"/>
+            <path d="M10 12C5.58172 12 2 14.6863 2 18H18C18 14.6863 14.4183 12 10 12Z" fill="white"/>
+          </svg>
+        </button>
+
+        -->
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+
+  <main class="min-h-screen flex items-center justify-center pt-24 pb-12 px-6">
+    <div class="w-full max-w-3xl">
+      
+      <!-- Cleaner tab buttons with better spacing and styling -->
+
+      <!-- Tab Buttons -->
+       
+      <div class="flex justify-center gap-3 mb-16">
+        <button 
+          onclick="switchTab('tier1')" 
+          id="tier1-btn"
+          class="px-10 py-3.5 rounded-xl font-semibold transition-all bg-gradient-to-r from-violet-500 to-purple-600 text-white shadow-xl shadow-violet-500/30 hover:shadow-violet-500/40 hover:scale-105"
+        >
+          Tier 1
+        </button>
+        <button 
+          onclick="switchTab('tier2')" 
+          id="tier2-btn"
+          class="px-10 py-3.5 rounded-xl font-semibold transition-all bg-zinc-900/50 border border-zinc-800/50 text-zinc-300 hover:border-zinc-700 hover:bg-zinc-900/80 hover:text-white backdrop-blur-sm"
+        >
+          Tier 2
+        </button>
+        <button 
+          onclick="switchTab('beco')" 
+          id="beco-btn"
+          class="px-10 py-3.5 rounded-xl font-semibold transition-all bg-zinc-900/50 border border-zinc-800/50 text-zinc-300 hover:border-zinc-700 hover:bg-zinc-900/80 hover:text-white backdrop-blur-sm"
+        >
+          BECO
+        </button>
+      </div>
+
+      <!-- Cleaner tab content with improved card design and scrollable layout -->
+      <!-- Tab Content Areas -->
+      <div id="tier1" class="tab-content active">
+        <div class="bg-zinc-900/30 backdrop-blur-sm border border-zinc-800/50 rounded-2xl p-8 shadow-2xl">
+          <div class="mb-8">
+            <h2 class="text-3xl font-bold mb-3 bg-gradient-to-r from-violet-400 to-purple-500 bg-clip-text text-transparent">Tier 1 SOPs</h2>
+            <p class="text-zinc-400 leading-relaxed">Standard Operating Procedures for Tier 1 work center operations.</p>
+          </div>
+          
+          <!-- Centered search bar with w-1/2 width -->
+          <div class="flex justify-center mb-6">
+            <div class="relative w-3/5">
+              <input 
+                id="search-input"
+                type="text" 
+                placeholder="Search SOPs..." 
+                class="w-full bg-black/40 border border-zinc-800/50 rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-violet-500/50 focus:ring-2 
+                focus:ring-violet-500/20 transition-all backdrop-blur-sm"
+                oninput="searchSOPs()"
+              />
+              <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M11 11L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          lorem400
+          <div class="space-y-3 max-h-96 overflow-y-auto pr-2">
+            <a href="#" class="block p-5 bg-black/40 backdrop-blur-sm border border-zinc-800/50 rounded-xl hover:border-violet-500/50 hover:bg-zinc-900/40 transition-all group">
+              <h3 class="font-semibold text-lg mb-1 group-hover:text-violet-400 transition-colors">Placeholder Title</h3>
+              <p class="text-sm text-zinc-500">Placeholder description.</p>
+            </a>
+            <a href="#" class="block p-5 bg-black/40 backdrop-blur-sm border border-zinc-800/50 rounded-xl hover:border-violet-500/50 hover:bg-zinc-900/40 transition-all group">
+              <h3 class="font-semibold text-lg mb-1 group-hover:text-violet-400 transition-colors">Lorem ipsum dolor sit amet.</h3>
+              <p class="text-sm text-zinc-500">Lorem ipsum dolor sit amet.</p>
+            </a>
+            <a href="#" class="block p-5 bg-black/40 backdrop-blur-sm border border-zinc-800/50 rounded-xl hover:border-violet-500/50 hover:bg-zinc-900/40 transition-all group">
+              <h3 class="font-semibold text-lg mb-1 group-hover:text-violet-400 transition-colors">Lorem ipsum dolor sit.</h3>
+              <p class="text-sm text-zinc-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam eveniet ullam ab nam voluptatum est veniam magni odio maiores veritatis.</p>
+            </a>
+            <a href="#" class="block p-5 bg-black/40 backdrop-blur-sm border border-zinc-800/50 rounded-xl hover:border-violet-500/50 hover:bg-zinc-900/40 transition-all group">
+              <h3 class="font-semibold text-lg mb-1 group-hover:text-violet-400 transition-colors">Lorem, ipsum dolor.</h3>
+              <p class="text-sm text-zinc-500">Step-by-step procedures</p>
+            </a>
+            <a href="#" class="block p-5 bg-black/40 backdrop-blur-sm border border-zinc-800/50 rounded-xl hover:border-violet-500/50 hover:bg-zinc-900/40 transition-all group">
+              <h3 class="font-semibold text-lg mb-1 group-hover:text-violet-400 transition-colors">Incident Reporting</h3>
+              <p class="text-sm text-zinc-500">Proper incident documentation and reporting procedures</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div id="tier2" class="tab-content">
+        <div class="bg-zinc-900/30 backdrop-blur-sm border border-zinc-800/50 rounded-2xl p-8 shadow-2xl">
+          <div class="mb-8">
+            <h2 class="text-3xl font-bold mb-3 bg-gradient-to-r from-violet-400 to-purple-500 bg-clip-text text-transparent">Tier 2 SOPs</h2>
+            <p class="text-zinc-400 leading-relaxed">Standard Operating Procedures for Tier 2 work center operations.</p>
+          </div>
+          
+          <!-- Centered search bar with w-1/2 width -->
+          <div class="flex justify-center mb-6">
+            <div class="relative w-1/2">
+              <input 
+                id="search-input-tier2"
+                type="text" 
+                placeholder="Search SOPs..." 
+                class="w-full bg-black/40 border border-zinc-800/50 rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-violet-500/50 focus:ring-2 focus:ring-violet-500/20 transition-all backdrop-blur-sm"
+                oninput="searchSOPs()"
+              />
+              <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M11 11L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          
+          <div class="space-y-3 max-h-96 overflow-y-auto pr-2">
+            <a href="#" class="block p-5 bg-black/40 backdrop-blur-sm border border-zinc-800/50 rounded-xl hover:border-violet-500/50 hover:bg-zinc-900/40 transition-all group">
+              <h3 class="font-semibold text-lg mb-1 group-hover:text-violet-400 transition-colors">Advanced Troubleshooting</h3>
+              <p class="text-sm text-zinc-500">Complex issue resolution procedures</p>
+            </a>
+            <a href="#" class="block p-5 bg-black/40 backdrop-blur-sm border border-zinc-800/50 rounded-xl hover:border-violet-500/50 hover:bg-zinc-900/40 transition-all group">
+              <h3 class="font-semibold text-lg mb-1 group-hover:text-violet-400 transition-colors">System Configuration</h3>
+              <p class="text-sm text-zinc-500">Configuration and optimization guidelines</p>
+            </a>
+            <a href="#" class="block p-5 bg-black/40 backdrop-blur-sm border border-zinc-800/50 rounded-xl hover:border-violet-500/50 hover:bg-zinc-900/40 transition-all group">
+              <h3 class="font-semibold text-lg mb-1 group-hover:text-violet-400 transition-colors">Lorem, ipsum dolor.</h3>
+              <p class="text-sm text-zinc-500">Lorem ipsum dolor sit amet consectetur.</p>
+            </a>
+            <a href="#" class="block p-5 bg-black/40 backdrop-blur-sm border border-zinc-800/50 rounded-xl hover:border-violet-500/50 hover:bg-zinc-900/40 transition-all group">
+              <h3 class="font-semibold text-lg mb-1 group-hover:text-violet-400 transition-colors">Lorem, ipsum dolor.</h3>
+              <p class="text-sm text-zinc-500">Lorem ipsum dolor sit amet.</p>
+            </a>
+            <a href="#" class="block p-5 bg-black/40 backdrop-blur-sm border border-zinc-800/50 rounded-xl hover:border-violet-500/50 hover:bg-zinc-900/40 transition-all group">
+              <h3 class="font-semibold text-lg mb-1 group-hover:text-violet-400 transition-colors">System Updates</h3>
+              <p class="text-sm text-zinc-500">Patch management and update procedures</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div id="beco" class="tab-content">
+        <div class="bg-zinc-900/30 backdrop-blur-sm border border-zinc-800/50 rounded-2xl p-8 shadow-2xl">
+          <div class="mb-8">
+            <h2 class="text-3xl font-bold mb-3 bg-gradient-to-r from-violet-400 to-purple-500 bg-clip-text text-transparent">BECO SOPs</h2>
+            <p class="text-zinc-400 leading-relaxed">Standard Operating Procedures for BECO work center operations.</p>
+          </div>
+          
+          <!-- Centered search bar with w-1/2 width -->
+          <div class="flex justify-center mb-6">
+            <div class="relative w-1/2">
+              <input 
+                id="search-input-beco"
+                type="text" 
+                placeholder="Search SOPs..." 
+                class="w-full bg-black/40 border border-zinc-800/50 rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-violet-500/50 focus:ring-2 focus:ring-violet-500/20 transition-all backdrop-blur-sm"
+                oninput="searchSOPs()"
+              />
+              <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M11 11L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          
+          <div class="space-y-3 max-h-96 overflow-y-auto pr-2">
+            <a href="#" class="block p-5 bg-black/40 backdrop-blur-sm border border-zinc-800/50 rounded-xl hover:border-violet-500/50 hover:bg-zinc-900/40 transition-all group">
+              <h3 class="font-semibold text-lg mb-1 group-hover:text-violet-400 transition-colors">Operational Procedures</h3>
+              <p class="text-sm text-zinc-500">Core operational guidelines and workflows</p>
+            </a>
+            <a href="#" class="block p-5 bg-black/40 backdrop-blur-sm border border-zinc-800/50 rounded-xl hover:border-violet-500/50 hover:bg-zinc-900/40 transition-all group">
+              <h3 class="font-semibold text-lg mb-1 group-hover:text-violet-400 transition-colors">Compliance Requirements</h3>
+              <p class="text-sm text-zinc-500">Regulatory compliance and audit procedures</p>
+            </a>
+            <a href="#" class="block p-5 bg-black/40 backdrop-blur-sm border border-zinc-800/50 rounded-xl hover:border-violet-500/50 hover:bg-zinc-900/40 transition-all group">
+              <h3 class="font-semibold text-lg mb-1 group-hover:text-violet-400 transition-colors">Resource Management</h3>
+              <p class="text-sm text-zinc-500">Inventory and resource allocation protocols</p>
+            </a>
+            <a href="#" class="block p-5 bg-black/40 backdrop-blur-sm border border-zinc-800/50 rounded-xl hover:border-violet-500/50 hover:bg-zinc-900/40 transition-all group">
+              <h3 class="font-semibold text-lg mb-1 group-hover:text-violet-400 transition-colors">Communication Protocols</h3>
+              <p class="text-sm text-zinc-500">Internal and external communication standards</p>
+            </a>
+            <a href="#" class="block p-5 bg-black/40 backdrop-blur-sm border border-zinc-800/50 rounded-xl hover:border-violet-500/50 hover:bg-zinc-900/40 transition-all group">
+              <h3 class="font-semibold text-lg mb-1 group-hover:text-violet-400 transition-colors">Training Procedures</h3>
+              <p class="text-sm text-zinc-500">Onboarding and continuous training requirements</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    function switchTab(tabName) {
+      // Hide all tab contents
+      const allTabs = document.querySelectorAll('.tab-content');
+      allTabs.forEach(tab => tab.classList.remove('active'));
+      
+      // Show selected tab
+      document.getElementById(tabName).classList.add('active');
+      
+      // Update button styles
+      const allButtons = document.querySelectorAll('button[id$="-btn"]');
+      allButtons.forEach(btn => {
+        btn.classList.remove('bg-gradient-to-r', 'from-violet-500', 'to-purple-600', 'shadow-lg', 'shadow-violet-500/50');
+        btn.classList.add('bg-zinc-900/50', 'border', 'border-zinc-800/50', 'text-zinc-300');
+      });
+      
+      const activeBtn = document.getElementById(tabName + '-btn');
+      activeBtn.classList.remove('bg-zinc-900/50', 'border', 'border-zinc-800/50', 'text-zinc-300');
+      activeBtn.classList.add('bg-gradient-to-r', 'from-violet-500', 'to-purple-600', 'shadow-xl', 'shadow-violet-500/30');
+    }
+
+    function searchSOPs() {
+      // Get the active tab's search input
+      const activeTab = document.querySelector('.tab-content.active');
+      const searchInput = activeTab.querySelector('input[type="text"]');
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      
+      // Get all SOP links from the active tab only
+      const sopLinks = activeTab.querySelectorAll('a');
+      
+      sopLinks.forEach(link => {
+        const title = link.querySelector('h3').textContent.toLowerCase();
+        const description = link.querySelector('p').textContent.toLowerCase();
+        
+        // Check if search term matches title or description
+        if (title.includes(searchTerm) || description.includes(searchTerm)) {
+          link.style.display = 'block';
+        } else {
+          link.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
